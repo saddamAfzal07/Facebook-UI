@@ -48,15 +48,34 @@ class _menutabState extends State<menutab> with SingleTickerProviderStateMixin {
   ];
   final _scafoldkey = GlobalKey<ScaffoldState>();
 
-  Future<bool> shutdown() async {
+  Future<bool> close() async {
     if (tabController?.index == 0) {
-      SystemNavigator.pop();
+      bool res = await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Warning"),
+              content: Text("Are You sure You want to Exit"),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text("Yes")),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(false);
+                    },
+                    child: Text("No"))
+              ],
+            );
+          });
+      return Future.value(res);
     } else {
       Future.delayed(Duration(milliseconds: 200), () {
         tabController?.index = 0;
       });
     }
-
     return tabController?.index == 0;
   }
 
@@ -70,17 +89,41 @@ class _menutabState extends State<menutab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: shutdown,
+      onWillPop: close,
+      // onWillPop: () async {
+      //   bool res = await showDialog(
+      //       context: context,
+      //       builder: (context) {
+      //         return AlertDialog(
+      //           title: Text("Warning"),
+      //           content: Text("Are You sure You want to Exit"),
+      //           actions: [
+      //             ElevatedButton(
+      //                 onPressed: () {
+      //                   Navigator.of(context).pop(true);
+      //                 },
+      //                 child: Text("Yes")),
+      //             ElevatedButton(
+      //                 onPressed: () {
+      //                   Navigator.of(context).pop(false);
+      //                 },
+      //                 child: Text("No"))
+      //           ],
+      //         );
+      //       });
+      //   return Future.value(res);
+      // },
       child: Scaffold(
         key: _scafoldkey,
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: Text(
             "facebook",
             style: TextStyle(
               fontFamily: 'klavika',
               fontSize: 34,
               fontWeight: FontWeight.bold,
-              // color: Colors.blue[700],
+              color: Colors.blue[700],
             ),
           ),
           actions: [
@@ -93,6 +136,7 @@ class _menutabState extends State<menutab> with SingleTickerProviderStateMixin {
                 onPressed: () {},
                 icon: Icon(
                   Icons.search,
+                  color: Colors.black,
                 ),
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
@@ -110,6 +154,7 @@ class _menutabState extends State<menutab> with SingleTickerProviderStateMixin {
                 },
                 icon: Icon(
                   Icons.menu,
+                  color: Colors.black,
                 ),
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,

@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Facebook UI',
       theme: ThemeData(
-        // fontFamily: "Times New Roman",
-        primaryColor: Colors.white,
-      ),
+          // fontFamily: "Times New Roman",
+          // brightness: Brightness.light
+          primaryColor: Colors.white),
       home: menutab(),
     );
   }
