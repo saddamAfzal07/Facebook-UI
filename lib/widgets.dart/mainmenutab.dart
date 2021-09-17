@@ -80,7 +80,7 @@ class _menutabState extends State<menutab> with SingleTickerProviderStateMixin {
               fontFamily: 'klavika',
               fontSize: 34,
               fontWeight: FontWeight.bold,
-              color: Colors.blue[700],
+              // color: Colors.blue[700],
             ),
           ),
           actions: [
