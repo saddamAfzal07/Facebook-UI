@@ -57,7 +57,7 @@ class Drawerbox extends StatelessWidget {
                       backgroundImage: AssetImage("assets/user/sonam.jpg"),
                     ),
                     title: Text(
-                      "Sonam Sharma",
+                      "Papa Ki Pari",
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,

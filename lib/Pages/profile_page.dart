@@ -90,7 +90,7 @@ class _ProfileState extends State<Profile> {
                           height: 10,
                         ),
                         Text(
-                          "Sonam Sharma",
+                          "Papa Ki Pari",
                           style: TextStyle(
                               fontSize: 22.0, fontWeight: FontWeight.bold),
                         )
